@@ -15,6 +15,9 @@ class Calculator {
         case "/":
             return firstNumber / secoundNumber
             
+        case "%":
+            return firstNumber.truncatingRemainder(dividingBy: secoundNumber)
+            // Int가 아닌 데이터 타입에서 나머지를 계산할 땐 간단히 %를 사용하지 못 한다. 따라서 ".truncatingRemainder(dividingBy:)를 사용해야 한다!
         default:
             return 0 //"'+', '-', '*', '/' 중 한 가지를 입력해 주세요."
         }
@@ -31,8 +34,6 @@ let addResult = calculator.calculate(operator: "+", firstNumber: 10, secoundNumb
 //MARK: - 새로 알게된 점
 
 //  ** reserved keyword = a term designated by the programming language that cannot be used as an identifier. 즉, 식별자로 사용할 수 없는 프로그래밍 언어에서 지정한 용어이다. 코드의 충돌과 모호성을 방지하기 위해서 그렇다고 하는데 이걸 우회할 수 있는 게 백틱(`)이다. 참고로 한글로 설정되어 있으면 (₩)가 나오고, 영어로 설정되어 있으면 (`)가 나온다. 옵션과 함께 누르면 한글로 설정되어있어도 백틱을 쓸 수 있다.
-
-
 
 
 //MARK: - 궁금한 점
