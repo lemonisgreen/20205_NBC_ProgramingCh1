@@ -1,37 +1,28 @@
 class Calculator {
     // Todo : 내부 구현하기
     
-    var a: Int
-    var b: Int
-    
-    init(a: Int, b: Int) {
-        self.a = a
-        self.b = b
+    func add(_ a: Int, _ b: Int) -> Int {
+        return (a + b)
     }
     
-    func add() {
-        print (a + b)
+    func subtraction(_ a: Int, _ b: Int) -> Int {
+        return(a - b)
     }
     
-    func subtraction() {
-        print(a - b)
+    func multiple(_ a: Int, _ b: Int) -> Int {
+        return(a * b)
     }
     
-    func multiple() {
-        print(a * b)
+    func divide(_ a: Int, _ b: Int) -> Int {
+        return(a / b)
     }
-    
-    func divide() {
-        print(a / b)
-    }
-
 }
 
-let calculator = Calculator(a: 4, b: 5)// 인스턴스 생성하여 변수에 할당
+let calculator = Calculator()// 인스턴스 생성하여 변수에 할당
 
-calculator.add()
-calculator.divide()
-calculator.multiple()
-calculator.subtraction()
+calculator.add(3, 4)
+calculator.divide(2, 5)
+calculator.multiple(5, 6)
+calculator.subtraction(6, 7)
 
 // Todo : calculator 변수를 활용하여 사칙연산을 진행
