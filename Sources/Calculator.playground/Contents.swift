@@ -1,3 +1,6 @@
+protocol AbstractOperation {
+    func doCalculation(_ firstNumber: Float, _ secondNumber: Float) -> Float
+}
 
 class Calculator {
     var add = AddOperation()
@@ -7,25 +10,25 @@ class Calculator {
     var modulo = ModuloOperation()
 }
 
-class AddOperation {
+class AddOperation : AbstractOperation {
     func doCalculation(_ firstNumber: Float, _ secondNumber: Float) -> Float {
         firstNumber + secondNumber
     }
 }
 
-class SubtractOperation {
+class SubtractOperation : AbstractOperation {
     func doCalculation(_ firstNumber: Float, _ secondNumber: Float) -> Float {
         return firstNumber - secondNumber
     }
 }
 
-class MultipleOperation {
+class MultipleOperation : AbstractOperation {
     func doCalculation(_ firstNumber: Float, _ secondNumber: Float) -> Float {
         return firstNumber * secondNumber
     }
 }
 
-class DivideOperation {
+class DivideOperation : AbstractOperation {
     func doCalculation(_ firstNumber: Float, _ secondNumber: Float) -> Float {
         if secondNumber == 0 {
             print("정의 되지 않음")
@@ -36,7 +39,7 @@ class DivideOperation {
     }
 }
 
-class ModuloOperation {
+class ModuloOperation : AbstractOperation {
     var firstNumber: Float = 0.0
     var secondNumber: Float = 0.0
     
