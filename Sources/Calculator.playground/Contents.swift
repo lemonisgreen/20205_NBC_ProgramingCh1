@@ -31,24 +31,26 @@ class MultipleOperation : AbstractOperation {
 class DivideOperation : AbstractOperation {
     func doCalculation(_ firstNumber: Float, _ secondNumber: Float) -> Float {
         if secondNumber == 0 {
-            print("정의 되지 않음")
+            print("정의되지 않음")
             return 0
             // return값에 0이 아닌 String값을 넣고 싶은데 어떻게 하는 걸까?
+        } else {
+            return firstNumber / secondNumber
         }
-        return firstNumber / secondNumber
     }
 }
 
 class ModuloOperation : AbstractOperation {
-    var firstNumber: Float = 0.0
-    var secondNumber: Float = 0.0
-    
     func doCalculation(_ firstNumber: Float, _ secondNumber: Float) -> Float {
-        return firstNumber.truncatingRemainder(dividingBy: secondNumber)
-        // Int가 아닌 데이터 타입에서 나머지를 계산할 땐 간단히 %를 사용하지 못 한다. 따라서 ".truncatingRemainder(dividingBy:)를 사용해야 한다!
+        if secondNumber == 0 {
+            print("정의되지 않음")
+            return 0
+        } else {
+            return firstNumber.truncatingRemainder(dividingBy: secondNumber)
+            // Int가 아닌 데이터 타입에서 나머지를 계산할 땐 간단히 %를 사용하지 못 한다. 따라서 ".truncatingRemainder(dividingBy:)를 사용해야 한다!
+        }
     }
 }
-
 
 // 인스턴스 생성하여 변수에 할당
 let calculator = Calculator()
