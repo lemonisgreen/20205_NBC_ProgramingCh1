@@ -1,35 +1,61 @@
-class Calculator {
 
-    func calculate(operator: String, firstNumber: Float, secoundNumber: Float) -> Float {
-        //-> 함수 안에 있을 땐 파라미터(매개변수)
-        switch `operator` {
-        case "+":
-            return firstNumber + secoundNumber
-            
-        case "-":
-            return firstNumber - secoundNumber
-            
-        case "*":
-            return firstNumber * secoundNumber
-            
-        case "/":
-            return firstNumber / secoundNumber
-            
-        case "%":
-            return firstNumber.truncatingRemainder(dividingBy: secoundNumber)
-            // Int가 아닌 데이터 타입에서 나머지를 계산할 땐 간단히 %를 사용하지 못 한다. 따라서 ".truncatingRemainder(dividingBy:)를 사용해야 한다!
-        default:
-            return 0 //"'+', '-', '*', '/' 중 한 가지를 입력해 주세요."
-        }
+class Calculator {
+    var add = AddOperation()
+    var subtract = SubtractOperation()
+    var multiple = MultipleOperation()
+    var divide = DivideOperation()
+    var modulo = ModuloOperation()
+}
+
+class AddOperation {
+    func doCalculation(_ firstNumber: Float, _ secondNumber: Float) -> Float {
+        firstNumber + secondNumber
     }
 }
 
-let calculator = Calculator() // 인스턴스 생성하여 변수에 할당
-let addResult = calculator.calculate(operator: "+", firstNumber: 10, secoundNumber: 20)
-//밖에 있으면 전달인자
+class SubtractOperation {
+    func doCalculation(_ firstNumber: Float, _ secondNumber: Float) -> Float {
+        return firstNumber - secondNumber
+    }
+}
+
+class MultipleOperation {
+    func doCalculation(_ firstNumber: Float, _ secondNumber: Float) -> Float {
+        return firstNumber * secondNumber
+    }
+}
+
+class DivideOperation {
+    func doCalculation(_ firstNumber: Float, _ secondNumber: Float) -> Float {
+        if secondNumber == 0 {
+            print("정의 되지 않음")
+            return 0
+            // return값에 0이 아닌 String값을 넣고 싶은데 어떻게 하는 걸까?
+        }
+        return firstNumber / secondNumber
+    }
+}
+
+class ModuloOperation {
+    var firstNumber: Float = 0.0
+    var secondNumber: Float = 0.0
+    
+    func doCalculation(_ firstNumber: Float, _ secondNumber: Float) -> Float {
+        return firstNumber.truncatingRemainder(dividingBy: secondNumber)
+        // Int가 아닌 데이터 타입에서 나머지를 계산할 땐 간단히 %를 사용하지 못 한다. 따라서 ".truncatingRemainder(dividingBy:)를 사용해야 한다!
+    }
+}
+
+
+// 인스턴스 생성하여 변수에 할당
+let calculator = Calculator()
 
 // Todo : calculator 변수를 활용하여 사칙연산을 진행
-
+calculator.add.doCalculation(4, 5)
+calculator.divide.doCalculation(6, 7)
+calculator.modulo.doCalculation(5, 87)
+calculator.multiple.doCalculation(7, 8)
+calculator.subtract.doCalculation(6, 9)
 
 //MARK: - 새로 알게된 점
 
@@ -42,5 +68,3 @@ let addResult = calculator.calculate(operator: "+", firstNumber: 10, secoundNumb
 //init 값을 지정했을 때, 클래스 호출 시 전달인자(아규먼트) 생략 가능 -> 왜,..?
 
 //class에 매개변수를 선언하면 init 이 꼭 존재해야 한다고 했는데 static을 사용하면 init 이 없어도 class 오류가 뜨지 않는다. 왤까? static은 class에 관여받지 않고 독립적으로 존재하는 거라서 그렇다고 하는데 그럼 왜 class 안에다 생성하는 거지? class안에서 쓸 거라?
-
-
