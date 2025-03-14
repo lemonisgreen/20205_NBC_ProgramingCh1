@@ -1,7 +1,9 @@
+// 두 가지 수를 가지고 어떤 연산을 할 거라는 프로토콜 생성
 protocol CalculationProtocol {
     func calculate(_ firstNumber: Float, _ secondNumber: Float) -> Float
 }
 
+// 가장 상위 클래스에서 프로토콜 채택. 같은 프로토콜을 채택하고 있는 다른 하위 클래스를 사용할 있는 틀
 class Calculator {
     private let calculator: CalculationProtocol
     
@@ -13,24 +15,29 @@ class Calculator {
         calculator.calculate(firstNumber, secondNumber)
     }
 }
+
+//더하기 연산 하위 클래스
 class AddOperation : CalculationProtocol {
     func calculate(_ firstNumber: Float, _ secondNumber: Float) -> Float {
         firstNumber + secondNumber
     }
 }
 
+//빼기 연산 하위 클래스
 class SubtractOperation : CalculationProtocol {
     func calculate(_ firstNumber: Float, _ secondNumber: Float) -> Float {
         return firstNumber - secondNumber
     }
 }
 
+//곱하기 연산 하위 클래스
 class MultipleOperation : CalculationProtocol {
     func calculate(_ firstNumber: Float, _ secondNumber: Float) -> Float {
         return firstNumber * secondNumber
     }
 }
 
+//나누기 연산 하위 클래스
 class DivideOperation : CalculationProtocol {
     func calculate(_ firstNumber: Float, _ secondNumber: Float) -> Float {
         if secondNumber == 0 {
@@ -43,6 +50,7 @@ class DivideOperation : CalculationProtocol {
     }
 }
 
+//나머지 연산 하위 클래스
 class ModuloOperation : CalculationProtocol {
     func calculate(_ firstNumber: Float, _ secondNumber: Float) -> Float {
         if secondNumber == 0 {
@@ -60,9 +68,15 @@ let add = Calculator(calculator: AddOperation())
 let subtract = Calculator(calculator: SubtractOperation())
 let multiple = Calculator(calculator: MultipleOperation())
 let divide = Calculator(calculator: DivideOperation())
-let amodulo = Calculator(calculator: ModuloOperation())
+let modulo = Calculator(calculator: ModuloOperation())
 
 // Todo : calculator 변수를 활용하여 사칙연산을 진행
+add.calculate(5, 7)
+subtract.calculate(7, 5)
+multiple.calculate(9, 3)
+divide.calculate(1, 0)
+modulo.calculate(9, 2)
+modulo.calculate(8, 0)
 
 
 //MARK: - 새로 알게된 점
