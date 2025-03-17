@@ -1,4 +1,4 @@
-# 20205_NBC_Ch.2 Programing <계산기 만들기>
+# 2025_NBC_Ch.2_basic <계산기 만들기>
 
 ![스크린샷 2025-03-14 10 03 00](https://github.com/user-attachments/assets/7e7abc3f-013e-4022-94df-d1c7b9306967)
 
